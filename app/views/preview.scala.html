@@ -1,0 +1,33 @@
+@(digest: api.Digest)
+
+@main("Welcome to Play") {
+
+<div class="digest-container">
+
+        <div style="max-width: 100%;" align="center fullwidth">
+        <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 100%;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px" border="0" width="100%" align="center fullwidth" src="@routes.Assets.versioned("images/logo.png")"/>
+    </div>
+
+    <div class="digest-title">
+        <h3>Digest #2</h3>
+    </div>
+
+    <div class="topics">
+        @for(topic <- digest.topics) {
+        <div class="topic-title">
+            <h3>@topic.topic</h3>
+        </div>
+        <div>
+            @for(article <- topic.articles) {
+            <div>
+                <h4>@article.title </h4>
+            </div>
+            <div>@article.description</div>
+            <div><a href="@article.url">@article.url</a></div>
+            }
+            }
+        </div>
+
+    </div>
+</div>
+}
