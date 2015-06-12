@@ -1,11 +1,51 @@
 @(digest: api.Digest)
 
-@main("Welcome to Play") {
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+</head>
+<style>
+    body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222222;
+    background-color: #ffffff;
+    }
+
+    a {
+    color: #008cba;
+    }
+
+    .digest-container {
+    margin: auto;
+    width: 600px;
+    }
+
+    .digest-title {
+    background-color: #F9F9F9;
+    color: #555555;
+    text-align: right;
+    padding: 5px;
+    }
+
+    .topic-title{
+    background-color: #F9F9F9;
+    color: #555555;
+    text-align: left;
+    padding: 5px;
+    }
+
+</style>
+<body>
 
 <div class="digest-container">
 
-        <div style="max-width: 100%;" align="center fullwidth">
-        <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 100%;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px" border="0" width="100%" align="center fullwidth" src="@routes.Assets.versioned("images/logo.png")"/>
+    <div style="max-width: 100%;" align="center fullwidth">
+        <img style="outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 100%;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px"
+             border="0" width="100%" align="center fullwidth" src="@routes.Assets.versioned("images/logo.png")"/>
     </div>
 
     <div class="digest-title">
@@ -30,4 +70,5 @@
 
     </div>
 </div>
-}
+</body>
+</html>
