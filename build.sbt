@@ -12,9 +12,14 @@ libraryDependencies ++= Seq(
   ws,
   "org.webjars" % "bootstrap" % "3.3.4",
   "io.spray" % "spray-json_2.11" % "1.3.2",
+  "org.webjars" %% "webjars-play" % "2.4.0-1",
 
   specs2 % Test
 )
+
+LessKeys.compress in Assets := true
+
+includeFilter in (Assets, LessKeys.less) := "*.less"
 
 resolvers += "scalaz-bintray" at "http://dl.bintray.com/scalaz/releases"
 
