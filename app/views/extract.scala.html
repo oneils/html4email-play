@@ -1,6 +1,13 @@
-@(message: String)
+@(fileName: String, extractedFilePath: String)
 
 @main("Welcome to Play") {
 
-<h1>@message</h1>
+    <div class="container">
+        <div class="row">
+            <h2>
+            File  <strong>@fileName </strong> is extracted to folder:  <strong>@extractedFilePath</strong>
+            </h2>
+        </div>
+    </div>
+
 }

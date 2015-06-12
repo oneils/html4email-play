@@ -15,10 +15,16 @@ class HtmlGenerator extends Controller{
   def extract = Action {
 
     val html: String = Source.fromURL("http://localhost:9000/preview").mkString
+    val fileName = "digest.html"
 
-    Files.write(Paths.get("/home/abahdanau/tmp/out.html"), html.getBytes(StandardCharsets.UTF_8))
 
-    Ok(views.html.extract("Extracted"))
+    Files.write(Paths.get(userHomeDirectory + "/" + fileName), html.getBytes(StandardCharsets.UTF_8))
+
+    val message = "File '" + fileName + "' is extracted to folder: " + userHomeDirectory
+    val savedFilePath = userHomeDirectory + "/" + fileName
+    Ok(views.html.extract(fileName, savedFilePath))
   }
+
+  def userHomeDirectory = System.getProperty("user.home")
 
 }
