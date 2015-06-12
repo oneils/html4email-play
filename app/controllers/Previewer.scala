@@ -19,6 +19,9 @@ class Previewer extends Controller{
 
     val jsonParser = new JSonParser
     val digest: Digest = jsonParser.parse(jsonString)
-    Ok(views.html.preview(digest))
+
+    val logoFullPath = Play.classloader.getResource("public/images/logo.png").getPath
+
+    Ok(views.html.preview(digest, logoFullPath))
   }
 }
