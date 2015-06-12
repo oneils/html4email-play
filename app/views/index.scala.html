@@ -3,8 +3,20 @@
 @main("Welcome to Play") {
 
 <div class="container">
-    <a class="btn btn-default" href="/extract" role="button">Extract</a>
-    <a class="btn btn-default" href="/preview" role="button">Preview</a>
+    <div class="row">
+        Default directory: @message
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            <a class="btn btn-default" href="/extract" role="button">Extract to default directory</a>
+        </div>
+        <div class="col-md-3">
+            <a class="btn btn-default" href="/preview" role="button">Preview</a>
+        </div>
+
+    </div>
+
 </div>
 
 

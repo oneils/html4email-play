@@ -1,9 +1,11 @@
 package controllers
 
+import java.io.File
 import java.nio.charset.StandardCharsets
 import java.nio.file.{Paths, Files}
 
 import play.api.mvc.{Action, Controller}
+import settings.DefaultSettings
 
 import scala.io.Source
 
@@ -14,17 +16,19 @@ class HtmlGenerator extends Controller{
 
   def extract = Action {
 
-    val html: String = Source.fromURL("http://localhost:9000/preview").mkString
-    val defaultFileName = "digest.html"
+    val host = DefaultSettings.host
+    val port = DefaultSettings.port
+    val extractUrl = DefaultSettings.extractingUrl
 
+    val html: String = Source.fromURL(host + ":" + port + "/" + extractUrl).mkString
 
-    Files.write(Paths.get(defaultExtractDirectory + "/" + defaultFileName), html.getBytes(StandardCharsets.UTF_8))
+    val defaultFileName = DefaultSettings.defaultFileName
+    val defaultExtractDirectory = DefaultSettings.defaultExtractDirectory
 
-    val message = "File '" + defaultFileName + "' is extracted to folder: " + defaultExtractDirectory
-    val savedFilePath = defaultExtractDirectory + "/" + defaultFileName
+    val savedFilePath = defaultExtractDirectory + File.separator + defaultFileName
+
+    Files.write(Paths.get(savedFilePath), html.getBytes(StandardCharsets.UTF_8))
+
     Ok(views.html.extract(defaultFileName, savedFilePath))
   }
-
-  def defaultExtractDirectory = System.getProperty("user.home")
-
 }
