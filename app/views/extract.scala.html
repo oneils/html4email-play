@@ -1,11 +1,12 @@
-@(fileName: String, extractedFilePath: String)
+@import api.DigestPath
+@(fileName: String, digestPath: DigestPath)
 
 @main("Welcome to Play") {
 
     <div class="container">
         <div class="row">
             <h2>
-            File  <strong>@fileName </strong> is extracted to folder:  <strong>@extractedFilePath</strong>
+            File  <strong>@fileName </strong> is extracted to folder:  <strong>@digestPath.htmlPath</strong>
             </h2>
         </div>
     </div>
