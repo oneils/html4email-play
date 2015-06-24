@@ -19,44 +19,46 @@ import scala.io.{BufferedSource, Source}
  * @author Aliaksei Bahdanau.
  */
 class HtmlGenerator extends Controller {
+  val jsonParser = new JSonParser
+  val defaultOutputFileName = DefaultSettings.defaultFileName
 
   def extract = Action {
 
     implicit request =>
       val digestPath = extractPathForm.bindFromRequest.get
 
-      val jsonParser = new JSonParser
+      val digest: Digest = getDigest(digestPath)
+      val htmlContent: AnyRef = getHtmlContent(digest)
 
-      val jsonString = getJsonAsString(digestPath.jsonPath)
+      saveHtmlToFile(digestPath, htmlContent)
 
-      val digest: Digest = jsonParser.parse(jsonString)
-      val logoFullPath = Play.classloader.getResource("public/images/logo.png").getPath
-
-      val content = views.html.preview.render(digest, logoFullPath)
-
-      val html: String = content.toString
-      val defaultFileName = DefaultSettings.defaultFileName
-
-      val pathForExtracting = buildExportPath(digestPath.htmlPath)
-      val fullPathForExtracting: String = pathForExtracting + File.separator + defaultFileName
-
-      saveHtmlToFile(fullPathForExtracting, html)
-
-      Ok(views.html.extract(defaultFileName, digestPath))
+      Ok(views.html.extract(defaultOutputFileName, digestPath))
   }
 
-  def getJsonAsString(jsonPath: String): String = {
+  private def getHtmlContent(digest: Digest) = {
+    val logoFullPath = Play.classloader.getResource("public/images/logo.png").getPath
+    views.html.preview.render(digest, logoFullPath)
+  }
+
+  private def getDigest(digestPath: DigestPath): Digest = {
+    val jsonString = getJsonAsString(digestPath.jsonPath)
+    jsonParser.parse(jsonString)
+  }
+
+  private def getJsonAsString(jsonPath: String): String = {
     val jsonSource: BufferedSource = Source.fromFile(jsonPath)
     try jsonSource.getLines() mkString finally jsonSource.close()
   }
 
-  def buildExportPath(path: Any): String = path match {
+  private def buildExportPath(path: Any): String = path match {
     case originalPath: String => path.toString
     case _ => DefaultSettings.defaultExtractDirectory
   }
 
-  def saveHtmlToFile(pathForSaving: String, html: String): Unit = {
-    Files.write(Paths.get(pathForSaving), html.getBytes(StandardCharsets.UTF_8))
+  def saveHtmlToFile(digestPath: DigestPath, html: AnyRef): Unit = {
+    val pathForSavingHtml = buildExportPath(digestPath.htmlPath)
+    val pathForSaving: String = pathForSavingHtml + File.separator + defaultOutputFileName
+    Files.write(Paths.get(pathForSaving), html.toString.getBytes(StandardCharsets.UTF_8))
   }
 
   val extractPathForm = Form(

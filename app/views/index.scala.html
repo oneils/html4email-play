@@ -1,5 +1,4 @@
-@import api.DigestPath
-@(message: String, extractForm: Form[DigestPath])
+@(message: String)
 
 @main("Welcome to Play") {
 
@@ -17,36 +16,11 @@
             <label for="export-html-file-path">Path to directory for exporting generated HTML file:</label>
             <input type="text" class="form-control" id="export-html-file-path" placeholder="@message/digest.html" name="htmlPath">
         </div>
-        @*<div class="form-group">*@
-            @*<label for="exampleInputFile">File input</label>*@
-            @*<input type="file" id="exampleInputFile">*@
-            @*<p class="help-block">Example block-level help text here.</p>*@
-        @*</div>*@
 
         <button type="submit" class="btn btn-default">
             <span class="glyphicon glyphicon-save"></span>
             Extract html</button>
     </form>
 
-    <div class="row">
-        <div class="col-md-3">
-            <a class="btn btn-default" href="/extract" role="button">
-                <span class="glyphicon glyphicon-save"></span>
-                Extract to default directory</a>
-        </div>
-        <div class="col-md-3">
-            <a class="btn btn-default" href="/preview" role="button">
-
-            Preview
-            </a>
-        </div>
-
-
-    @*<form action="@routes.Application.getExtractPath()" method="post">*@
-        @*<input type="text" name="path">*@
-        @*<button>Save Html file</button>*@
-    @*</form>*@
-
-    </div>
 </div>
 }

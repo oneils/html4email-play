@@ -5,8 +5,6 @@
 # Home page
 GET         /                    controllers.Application.index
 
-POST       /getExtractPath      controllers.Application.saveHtmlFile
-
 # Html extractor
 GET         /extract             controllers.HtmlGenerator.extract
 POST        /extract             controllers.HtmlGenerator.extract
