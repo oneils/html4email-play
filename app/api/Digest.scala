@@ -3,6 +3,6 @@ package api
 /**
  * @author Aliaksei Bahdanau.
  */
-case class Digest(topics: List[Topic]) {
+case class Digest(title: String, topics: List[Topic]) {
 
 }

@@ -8,5 +8,5 @@ import spray.json.DefaultJsonProtocol
 object DigestProtocol extends DefaultJsonProtocol {
   implicit val article = jsonFormat3(Article)
   implicit val categoryFormat = jsonFormat2(Topic)
-  implicit val digestFormat = jsonFormat1(Digest)
+  implicit val digestFormat = jsonFormat2(Digest)
 }
