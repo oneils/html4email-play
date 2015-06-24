@@ -1,18 +1,18 @@
 package controllers
 
-import java.io.File
-import java.net.URL
+import java.io._
 import java.nio.charset.StandardCharsets
-import java.nio.file.{Paths, Files}
+import java.nio.file.{Files, Paths}
 
 import api.{Digest, DigestPath}
 import parser.JSonParser
 import play.api.Play
+import play.api.Play.current
 import play.api.data.Form
 import play.api.data.Forms.{mapping, text}
 import play.api.mvc.{Action, Controller}
 import settings.DefaultSettings
-import play.api.Play.current
+
 import scala.io.{BufferedSource, Source}
 
 /**
