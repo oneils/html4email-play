@@ -1,12 +1,19 @@
 @import api.DigestPath
-@(fileName: String, digestPath: DigestPath)
+@(fileName: String, digestPath: DigestPath, defaultFolder: String)
 
 @main("Welcome to Play") {
 
     <div class="container">
         <div class="row">
             <h2>
-            File  <strong>@fileName </strong> is extracted to folder:  <strong>@digestPath.htmlPath</strong>
+            File  <strong>@fileName </strong> is extracted to folder:
+                <strong>
+                    @if(digestPath.htmlPath.isEmpty) {
+                        @defaultFolder
+                    } else {
+                        @digestPath.htmlPath
+                    }
+                </strong>
             </h2>
         </div>
     </div>

@@ -19,8 +19,8 @@ import scala.io.{BufferedSource, Source}
  * @author Aliaksei Bahdanau.
  */
 class HtmlGenerator extends Controller {
-  val jsonParser = new JSonParser
-  val defaultOutputFileName = DefaultSettings.defaultFileName
+  private val defaultOutputFileName = DefaultSettings.defaultFileName
+  private val defaultOutputDirectory = DefaultSettings.defaultExtractDirectory
 
   def extract = Action {
 
@@ -32,7 +32,7 @@ class HtmlGenerator extends Controller {
 
       saveHtmlToFile(digestPath, htmlContent)
 
-      Ok(views.html.extract(defaultOutputFileName, digestPath))
+      Ok(views.html.extract(defaultOutputFileName, digestPath, defaultOutputDirectory))
   }
 
   private def getHtmlContent(digest: Digest) = {
@@ -42,15 +42,22 @@ class HtmlGenerator extends Controller {
 
   private def getDigest(digestPath: DigestPath): Digest = {
     val jsonString = getJsonAsString(digestPath.jsonPath)
-    jsonParser.parse(jsonString)
+    new JSonParser().parse(jsonString)
   }
 
   private def getJsonAsString(jsonPath: String): String = {
-    val jsonSource: BufferedSource = Source.fromFile(jsonPath)
-    try jsonSource.getLines() mkString finally jsonSource.close()
+
+    if (jsonPath == "") {
+      val digestJsonUrl = Play.classloader.getResource("digest.json")
+      Source.fromURL(digestJsonUrl).getLines().mkString
+    } else {
+      val jsonSource: BufferedSource = Source.fromFile(jsonPath)
+      try jsonSource.getLines() mkString finally jsonSource.close()
+    }
   }
 
   private def buildExportPath(path: Any): String = path match {
+    case "" => DefaultSettings.defaultExtractDirectory
     case originalPath: String => path.toString
     case _ => DefaultSettings.defaultExtractDirectory
   }
@@ -72,6 +79,6 @@ class HtmlGenerator extends Controller {
     implicit request =>
       val digestPath = extractPathForm.bindFromRequest.get
 
-      Ok(views.html.extract("fileName", digestPath))
+      Ok(views.html.extract("fileName", digestPath, defaultOutputDirectory))
   }
 }
