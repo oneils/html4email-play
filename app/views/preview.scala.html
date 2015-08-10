@@ -147,8 +147,9 @@
             <!--[if (gte mso 9)|(IE)]>
 
 
-            
-            <!-- news table -->
+
+            <!-- news and digest title tables -->
+
             <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
@@ -219,6 +220,9 @@
             </table>
             <![endif]-->
             <!--[if (gte mso 9)|(IE)]>
+
+
+
             <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
@@ -344,8 +348,21 @@
             </td>
             </tr>
             </table>
+
+
             <![endif]-->
+
+<!-- ========== End of NEWS articles -->
+
+
+
+
+
+<!-- ==================== start of Interesting and usefull block -->
+    @for(topic <- digest.topics) {
+
             <!--[if (gte mso 9)|(IE)]>
+
             <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                     <td>
@@ -372,11 +389,11 @@
                                                                     <tbody><tr style="vertical-align: top">
                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
 
-                                                                            <!-- Div for interesting and usefull-->
+                                                                            <!-- Div with topics title-->
                                                                             <div style="color:#555555;line-height:200%;font-family:Lucida Sans Unicode;">
                                                                                 <div style="font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Lucida Sans Unicode;line-height: 36px">
                                                                                     <span style="font-size:18px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx; line-height:36px;">
-                                                                                        <strong>&#1056;&#1072;&#1079;&#1085;&#1086;&#1077; &#1080;&#1085;&#1090;&#1077;&#1088;&#1077;&#1089;&#1085;&#1086;&#1077; &#1080; &#1087;&#1086;&#1083;&#1077;&#1079;&#1085;&#1086;&#1077;</strong></span></div>
+                                                                                        <strong>@topic.topic</strong></span></div>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -563,6 +580,10 @@
             </tr>
             </table>
             <![endif]-->
+
+    }
+<!-- ====================End of Interesting and usefull block -->
+
             <!--[if (gte mso 9)|(IE)]>
             <table width='645' class="ieCell" align="center" cellpadding="0" cellspacing="0" border="0">
                 <tr>
