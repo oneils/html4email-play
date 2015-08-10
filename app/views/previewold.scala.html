@@ -1,0 +1,112 @@
+@(digest: api.Digest, logoFullPath: String)
+
+<!DOCTYPE html>
+
+<html lang="ru">
+<head>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans&subset=latin,cyrillic-ext' rel='stylesheet' type='text/css'>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+</head>
+<style>
+
+    body {
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222222;
+    background-color: #ffffff;
+    }
+
+    h3, h4 {
+    color: #555555;
+    }
+
+    a {
+    color: #008cba;
+    }
+
+    .digest-container {
+    margin: auto;
+    width: 600px;
+    }
+
+    .digest-title {
+    background-color: rgb(229, 229, 229);
+    color: #555555;
+    text-align: right;
+    padding: 2px;
+    }
+
+    .topic-title{
+    background-color: rgb(229, 229, 229);
+    color: #555555;
+    text-align: left;
+    padding: 2px;
+    height: 48px;
+    }
+
+    footer {
+    background-color : #555555 ;
+    padding-top : 40px ;
+    padding-bottom : 10px ;
+    padding-right : 10px ;
+    margin: 5px auto;
+
+    }
+
+    .footer-text {
+    text-align : right ;
+    color : #FFFFFF ;
+    font-size : 12px ;
+
+    }
+
+    .footer-text a {
+    color : #FFFFFF ;
+
+    }
+
+    .footer-text a:hover {
+    color : #00B2E0 ;
+    text-decoration : underline ;
+    }
+
+</style>
+<body>
+
+<div class="digest-container">
+
+    <div style="max-width:100%;" align="center fullwidth">
+        <img style="outline:none;text-decoration: none;-ms-interpolation-mode: bicubic;width: 100%;clear: both;display: block;border: none;height: auto;line-height: 100%;margin: 0 auto;float: none;max-width: 645px"
+             border="0" width="100%" align="center fullwidth" src="@logoFullPath" alt="Digest Logo"/>
+    </div>
+
+    <div class="digest-title">
+        <h3>@digest.title</h3>
+    </div>
+
+    <div class="topics">
+        @for(topic <- digest.topics) {
+        <div class="topic-title">
+            <h3>@topic.topic</h3>
+        </div>
+        <div>
+            @for(article <- topic.articles) {
+            <div>
+                <h4>@article.title </h4>
+            </div>
+            <article>@article.description</article>
+            <div><a href="@article.url">Read more</a></div>
+            }
+            }
+        </div>
+        <footer>
+            <div class="footer-text">
+                <a href="mailto:yorcompany@@mail.com">2015 TechCommunity</a>
+            </div>
+        </footer>
+
+    </div>
+</div>
+</body>
+</html>
