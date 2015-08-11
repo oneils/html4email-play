@@ -80,6 +80,8 @@
     }
     }
 </style>
+
+<div style="width:650px; margin: auto">
 <table class="body" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;height: 100%;width: 100%;table-layout: fixed" cellpadding="0" cellspacing="0" width="100%" border="0">
     <tbody><tr style="vertical-align: top">
         <td class="center" style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;text-align: center;background-color: #FFFFFF" align="center" valign="top">
@@ -220,7 +222,7 @@
 
   @for(topic <- digest.topics) {
 
-            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: #F9F9F9" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
+            <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top;background-color: transparent" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
                 <tbody><tr style="vertical-align: top">
                     <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top" width="100%">
                         <table class="container" style="border-spacing: 0;border-collapse: collapse;vertical-align: top;max-width: 645px;margin: 0 auto;text-align: inherit" cellpadding="0" cellspacing="0" align="center" width="100%" border="0">
@@ -240,7 +242,7 @@
                                                         <tbody>
                                                         <tr style="vertical-align: top">
                                                             <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;background-color: transparent;padding-top: 0px;padding-right: 0px;padding-bottom: 0px;padding-left: 0px;border-top: 0px none transparent;border-right: 0px none transparent;border-bottom: 0px none transparent;border-left: 0px none transparent">
-                                                                <table style="border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
+                                                                <table style="background-color: #F9F9F9; border-spacing: 0;border-collapse: collapse;vertical-align: top" cellpadding="0" cellspacing="0" width="100%">
                                                                     <tbody><tr style="vertical-align: top">
                                                                         <td style="word-break: break-word;-webkit-hyphens: auto;-moz-hyphens: auto;hyphens: auto;border-collapse: collapse !important;vertical-align: top;padding-top: 10px;padding-right: 10px;padding-bottom: 10px;padding-left: 10px">
 
@@ -248,7 +250,9 @@
                                                                             <div style="color:#555555;line-height:200%;font-family:Lucida Sans Unicode;">
                                                                                 <div style="font-size: 18px; line-height: 36px; text-align: center;color: #555555;font-family: Lucida Sans Unicode;line-height: 36px">
                                                                                     <span style="font-size:18px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx; line-height:36px;">
-                                                                                        <strong>@topic.topic</strong></span></div>
+                                                                                        <strong>@topic.topic</strong>
+                                                                                    </span>
+                                                                                </div>
                                                                             </div>
                                                                         </td>
                                                                     </tr>
@@ -264,15 +268,13 @@
                                                                                 <div style="font-size: 18px; line-height: 21px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 22px">
                                                                                     <a style="color:#0A74A2" href="@article.url">
                                                                                         @article.title
-                                                                                    </a></div><div style="font-size: 12px; line-height: 14px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 14px"><br></div><div style="font-size: 12px; line-height: 14px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 14px">
+                                                                                    </a>
+                                                                                </div>
+                                                                                <div style="font-size: 12px; line-height: 14px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 14px"><br></div><div style="font-size: 12px; line-height: 14px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 14px">
                                                                                 <span style="font-family:'lucida sans unicode', 'lucida grande', sans-serifpx; font-size:16px; line-height:19px;">
                                                                                     @article.description
                                                                                 </span></div>
-                                                                                <div style="font-size: 12px; line-height: 14px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 14px">
-                                                                                    <span style="font-family:'lucida sans unicode', 'lucida grande', sans-serifpx; font-size:16px; line-height:19px;">&#1053;&#1086;.... &#1087;&#1086;&#1076;&#1088;&#1086;&#1073;&#1085;&#1086;&#1089;&#1090;&#1080; &#1095;&#1080;&#1090;&#1072;&#1077;&#1084; &#1074; &#1089;&#1090;&#1072;&#1090;&#1100;&#1077;.
-                                                                                    </span>
-                                                                                </div>
-                                                                                <div style="font-size: 14px; line-height: 16px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 17px">
+                                                                                 <div style="font-size: 14px; line-height: 16px;color: #555555;font-family: Lucida Sans Unicode;text-align: left;line-height: 17px">
                                                                             <span style="font-size:16px; line-height:19px;font-family:'lucida sans unicode', 'lucida grande', sans-serifpx;" mce-data-marked="1">
                                                                                 <br data-mce-bogus="1">
                                                                             </span>
@@ -384,5 +386,6 @@
         </td>
     </tr>
     </tbody></table>
+</div>
 
 </body></html>
