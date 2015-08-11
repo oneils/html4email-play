@@ -32,7 +32,7 @@ class HtmlGenerator extends Controller {
 
       saveHtmlToFile(digestPath, htmlContent)
 
-      Ok(views.html.extract(defaultOutputFileName, digestPath, defaultOutputDirectory))
+      Ok(views.html.preview(digest, "assets/images/logo.png"))
   }
 
   private def getHtmlContent(digest: Digest) = {
