@@ -24,7 +24,7 @@ class HtmlGenerator extends Controller {
   def extract = Action {
 
     implicit request =>
-      val digestPath = extractPathForm.bindFromRequest.get
+      val digestPath: DigestPath = extractPathForm.bindFromRequest.get
 
       val digest: Digest = getDigest(digestPath)
       val htmlContent: AnyRef = getHtmlContent(digest)
@@ -63,8 +63,8 @@ class HtmlGenerator extends Controller {
 
   def saveHtmlToFile(digestPath: DigestPath, html: AnyRef, digestTitle: String): Unit = {
     val pathForSavingHtml = buildExportPath(digestPath.htmlPath)
-    val pathForSaving: String = pathForSavingHtml + File.separator + digestTitle + ".html"
-    Files.write(Paths.get(pathForSaving), html.toString.getBytes(StandardCharsets.UTF_8))
+    val fullPathForSaving: String = pathForSavingHtml + File.separator + digestTitle + ".html"
+    Files.write(Paths.get(fullPathForSaving), html.toString.getBytes(StandardCharsets.UTF_8))
   }
 
   val extractPathForm = Form(
