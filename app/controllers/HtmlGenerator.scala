@@ -19,7 +19,6 @@ import scala.io.{BufferedSource, Source}
  * @author Aliaksei Bahdanau.
  */
 class HtmlGenerator extends Controller {
-  private val defaultOutputFileName = DefaultSettings.defaultFileName
   private val defaultOutputDirectory = DefaultSettings.defaultExtractDirectory
 
   def extract = Action {
@@ -30,7 +29,7 @@ class HtmlGenerator extends Controller {
       val digest: Digest = getDigest(digestPath)
       val htmlContent: AnyRef = getHtmlContent(digest)
 
-      saveHtmlToFile(digestPath, htmlContent)
+      saveHtmlToFile(digestPath, htmlContent, digest.title)
 
       Ok(views.html.preview(digest, "assets/images/logo.png"))
   }
@@ -62,9 +61,9 @@ class HtmlGenerator extends Controller {
     case _ => DefaultSettings.defaultExtractDirectory
   }
 
-  def saveHtmlToFile(digestPath: DigestPath, html: AnyRef): Unit = {
+  def saveHtmlToFile(digestPath: DigestPath, html: AnyRef, digestTitle: String): Unit = {
     val pathForSavingHtml = buildExportPath(digestPath.htmlPath)
-    val pathForSaving: String = pathForSavingHtml + File.separator + defaultOutputFileName
+    val pathForSaving: String = pathForSavingHtml + File.separator + digestTitle + ".html"
     Files.write(Paths.get(pathForSaving), html.toString.getBytes(StandardCharsets.UTF_8))
   }
 

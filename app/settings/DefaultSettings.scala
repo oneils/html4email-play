@@ -7,7 +7,7 @@ object DefaultSettings {
 
   def defaultExtractDirectory = System.getProperty("user.home")
 
-  def defaultFileName = "digest.html"
+  def defaultFileName = "digest"
 
   def host = "http://localhost"
 
